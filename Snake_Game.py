@@ -4,6 +4,7 @@ import random
 
 # Set up the game window
 pygame.init()
+pygame.mixer.init()  # Initialize pygame mixer for sounds
 width, height = 1280, 720
 window = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Snake Game")
@@ -13,6 +14,11 @@ snake_block = 10
 snake_speed = 15
 snake_pos = [640, 360] # Spawn in Center of Screen
 snake_body = [snake_pos]
+
+# Load the sound file
+eat_sound = pygame.mixer.Sound("sounds\eat_sound.wav") 
+lvlUp_sound = pygame.mixer.Sound("sounds\levelUp_sound.wav") 
+death_sound = pygame.mixer.Sound("sounds\death_sound.wav") 
 
 # Function to draw the snake
 def draw_snake(snake_block, snake_body):
@@ -85,7 +91,9 @@ while not game_over:
         if snake_pos == food_pos:
             score += 1
             food_pos = getRandomFood()
-            if (score // 10 == 0): # Increase difficulty based on Score
+            eat_sound.play()
+            if (score % 10 == 0): # Increase difficulty based on Score
+                lvlUp_sound.play()
                 snake_speed += 1
         
         else:
@@ -102,7 +110,9 @@ while not game_over:
     pygame.draw.rect(window, (255, 0, 0), [food_pos[0], food_pos[1], snake_block, snake_block]) # red = (255, 0, 0)
     draw_snake(snake_block, snake_body)
 
-    if game_over: GameOver_Screen()
+    if game_over:
+        death_sound.play()
+        GameOver_Screen()
         
     # Display the score
     your_score(score)
