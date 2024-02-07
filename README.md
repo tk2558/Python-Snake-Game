@@ -12,4 +12,4 @@ Every 10 points will increase the level of the game which also increases Player 
 Sound is played when player eats, dies and level up <br />
 <br />
 <br />
-![Image of Start Screen](https://github.com/tk2558/Python-Snake-Game/blob/main/gameplay/start_screen.PNG)
+![GIF of Snake Gameplay]([https://github.com/tk2558/Python-Snake-Game/blob/main/gameplay/start_screen.PNG](https://github.com/tk2558/Python-Snake-Game/blob/main/gameplay/gameplay.gif)https://github.com/tk2558/Python-Snake-Game/blob/main/gameplay/gameplay.gif)
